@@ -17,6 +17,7 @@ namespace SliderPuzzle
         public PictureBox[] allNumbers;
         public Image[] allImages;
         public Random random = new Random();
+        public PictureBox currentBlankTile;
 
         public Form1()
         {
@@ -45,13 +46,52 @@ namespace SliderPuzzle
             }
 
             var shuffledImages = new Stack<Image>(allImages.OrderBy(x => Guid.NewGuid()).ToList());
+            Image imageToPlace;
 
             for (var i = 0; i < allTiles.Length; i++)
             {
-                allTiles[i].Image = shuffledImages.Pop();
+                imageToPlace = shuffledImages.Pop();
+                allTiles[i].Image = imageToPlace;
+                allTiles[i].Tag = imageToPlace.ToString();
+
+                if (imageToPlace.ToString() == "blank")
+                {
+                    allTiles[i].Tag = "blank";
+                    MessageBox.Show("Blank is: " + allTiles[i].Tag);
+                }
+            }
+            completed = false;
+        }
+
+        private void swapTile(object sender, EventArgs e)
+        {
+            var tile = (PictureBox)sender;
+
+           if ((String)tile.Tag == "blank")
+            {
+                MessageBox.Show("Pick a tile that has a number");
             }
 
-            completed = false;
+            var blankTileToSwap = getBlankTile();
+            var imageToPlace = tile.Image;
+            blankTileToSwap.Image = imageToPlace;
+            blankTileToSwap.Tag = tile.Tag.ToString();
+
+            tile.Image = Properties.Resources.blank;
+            tile.Tag = "blank";
+        }
+
+        private PictureBox getBlankTile()
+        {
+            for (var i = 0; i < allTiles.Length; i++)
+            {
+                if((String)allTiles[i].Tag == "blank")
+                {
+                    currentBlankTile = allTiles[i];
+                }
+            }
+            // fix this
+            return currentBlankTile;
         }
     }
 }

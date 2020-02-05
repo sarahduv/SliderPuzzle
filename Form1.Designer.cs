@@ -86,6 +86,7 @@
             this.nine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.nine.TabIndex = 8;
             this.nine.TabStop = false;
+            this.nine.Click += new System.EventHandler(this.swapTile);
             // 
             // eight
             // 
@@ -96,6 +97,7 @@
             this.eight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.eight.TabIndex = 7;
             this.eight.TabStop = false;
+            this.eight.Click += new System.EventHandler(this.swapTile);
             // 
             // seven
             // 
@@ -106,6 +108,7 @@
             this.seven.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.seven.TabIndex = 6;
             this.seven.TabStop = false;
+            this.seven.Click += new System.EventHandler(this.swapTile);
             // 
             // six
             // 
@@ -116,6 +119,7 @@
             this.six.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.six.TabIndex = 5;
             this.six.TabStop = false;
+            this.six.Click += new System.EventHandler(this.swapTile);
             // 
             // five
             // 
@@ -126,6 +130,7 @@
             this.five.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.five.TabIndex = 4;
             this.five.TabStop = false;
+            this.five.Click += new System.EventHandler(this.swapTile);
             // 
             // four
             // 
@@ -136,6 +141,7 @@
             this.four.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.four.TabIndex = 3;
             this.four.TabStop = false;
+            this.four.Click += new System.EventHandler(this.swapTile);
             // 
             // three
             // 
@@ -146,6 +152,7 @@
             this.three.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.three.TabIndex = 2;
             this.three.TabStop = false;
+            this.three.Click += new System.EventHandler(this.swapTile);
             // 
             // two
             // 
@@ -156,6 +163,7 @@
             this.two.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.two.TabIndex = 1;
             this.two.TabStop = false;
+            this.two.Click += new System.EventHandler(this.swapTile);
             // 
             // one
             // 
@@ -166,6 +174,7 @@
             this.one.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.one.TabIndex = 0;
             this.one.TabStop = false;
+            this.one.Click += new System.EventHandler(this.swapTile);
             // 
             // resetButton
             // 
@@ -187,6 +196,7 @@
             this.Controls.Add(this.tableLayoutPanel);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Click += new System.EventHandler(this.swapTile);
             this.tableLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eight)).EndInit();
