@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace SliderPuzzle
 {
@@ -53,9 +54,11 @@ namespace SliderPuzzle
             {
                 var imageToPlaceKey = shuffledImages.Pop();
                 imageToPlace = allImages[imageToPlaceKey];
+                
 
                 allTiles[i].Image = imageToPlace;
-                allTiles[i].Tag = imageToPlace.ToString();
+                allTiles[i].Tag = imageToPlaceKey;
+                Debug.WriteLine("tag:      " + allTiles[i].Tag);
 
                 if (imageToPlaceKey == "blank")
                 {
@@ -88,6 +91,11 @@ namespace SliderPuzzle
                 if(tileRow + 1 == blankTileRow || blankTileRow + 1 == tileRow)
                 {
                     helperSwapTile(tile, blankTileToSwap);
+                    if (checkForComplete())
+                    {
+                        MessageBox.Show("Completed");
+                        return;
+                    }
                     return;
                 }
             }
@@ -97,10 +105,14 @@ namespace SliderPuzzle
                 if(tileCol + 1 == blankTileCol || blankTileCol + 1 == tileCol)
                 {
                     helperSwapTile(tile, blankTileToSwap);
+                    if (checkForComplete())
+                    {
+                        MessageBox.Show("Completed");
+                        return;
+                    }
                     return;
                 }
-            }
-            
+            }            
         }
 
         private void helperSwapTile(PictureBox tile, PictureBox blankTile)
@@ -140,6 +152,22 @@ namespace SliderPuzzle
             }
             // fix this
             return currentBlankTile;
+        }
+
+
+        private bool checkForComplete()
+        {
+            var sortedKeys = new String[9] { "one", "two", "three", "four", "five", "six", "seven", "eight", "blank" };
+            var index = 0;
+            for(var i = 0; i < allTiles.Length; i++)
+            {
+                if((String)allTiles[i].Tag != sortedKeys[index])
+                {
+                    Debug.WriteLine((String)allTiles[i].Tag + "........." + sortedKeys[index]);
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
