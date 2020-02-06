@@ -19,6 +19,7 @@ namespace SliderPuzzle
         public Dictionary<string, Image> allImages;
         public Random random = new Random();
         public PictureBox currentBlankTile;
+        public int totalSwaps = 0;
 
         public Form1()
         {
@@ -42,6 +43,10 @@ namespace SliderPuzzle
 
         private void shuffleButton(object sender, EventArgs e)
         {
+            enableSwapping();
+            totalSwaps = 0;
+            totalSwapsCount.Text = totalSwaps.ToString();
+
             for (var i = 0; i < allTiles.Length; i++)
             {
                 allTiles[i].Image = null;
@@ -58,7 +63,6 @@ namespace SliderPuzzle
 
                 allTiles[i].Image = imageToPlace;
                 allTiles[i].Tag = imageToPlaceKey;
-                Debug.WriteLine("tag:      " + allTiles[i].Tag);
 
                 if (imageToPlaceKey == "blank")
                 {
@@ -70,7 +74,12 @@ namespace SliderPuzzle
 
         private void swapTile(object sender, EventArgs e)
         {
-           var tile = (PictureBox)sender;
+            var tile = (PictureBox)sender;
+            if (tile.Enabled)
+            {
+                totalSwaps++;
+                totalSwapsCount.Text = totalSwaps.ToString();
+            }
 
            if ((String)tile.Tag == "blank")
             {
@@ -85,7 +94,6 @@ namespace SliderPuzzle
             var tileRow = getTileRow(tile);
             var tileCol = getTileCol(tile);
 
-            // here you need to have an if that checks if the tile is above/below/left/right adjacent to the blank.
             if (blankTileCol == tileCol)
             {
                 if(tileRow + 1 == blankTileRow || blankTileRow + 1 == tileRow)
@@ -163,12 +171,28 @@ namespace SliderPuzzle
             {
                 if((String)allTiles[i].Tag != sortedKeys[index])
                 {
-                    Debug.WriteLine((String)allTiles[i].Tag + "........." + sortedKeys[index]);
                     return false;
                 }
                 index++;
             }
+            disableSwapping();
             return true;
+        }
+
+        private void disableSwapping()
+        {
+            for(var i = 0; i < allTiles.Length; i++)
+            {
+                allTiles[i].Enabled = false;
+            }
+        }
+
+        private void enableSwapping()
+        {
+            for (var i = 0; i < allTiles.Length; i++)
+            {
+                allTiles[i].Enabled = true;
+            }
         }
     }
 }

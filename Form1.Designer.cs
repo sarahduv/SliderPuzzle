@@ -39,6 +39,8 @@
             this.two = new System.Windows.Forms.PictureBox();
             this.one = new System.Windows.Forms.PictureBox();
             this.resetButton = new System.Windows.Forms.Button();
+            this.totalSwapsLabel = new System.Windows.Forms.Label();
+            this.totalSwapsCount = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eight)).BeginInit();
@@ -60,8 +62,8 @@
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel.Controls.Add(this.nine, 2, 2);
             this.tableLayoutPanel.Controls.Add(this.eight, 1, 2);
-            this.tableLayoutPanel.Controls.Add(this.seven, 0, 2);
             this.tableLayoutPanel.Controls.Add(this.six, 2, 1);
+            this.tableLayoutPanel.Controls.Add(this.seven, 0, 2);
             this.tableLayoutPanel.Controls.Add(this.five, 1, 1);
             this.tableLayoutPanel.Controls.Add(this.four, 0, 1);
             this.tableLayoutPanel.Controls.Add(this.three, 2, 0);
@@ -186,12 +188,36 @@
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.shuffleButton);
             // 
+            // totalSwapsLabel
+            // 
+            this.totalSwapsLabel.AutoSize = true;
+            this.totalSwapsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalSwapsLabel.ForeColor = System.Drawing.Color.White;
+            this.totalSwapsLabel.Location = new System.Drawing.Point(137, 413);
+            this.totalSwapsLabel.Name = "totalSwapsLabel";
+            this.totalSwapsLabel.Size = new System.Drawing.Size(129, 24);
+            this.totalSwapsLabel.TabIndex = 2;
+            this.totalSwapsLabel.Text = "Total Swaps:";
+            // 
+            // totalSwapsCount
+            // 
+            this.totalSwapsCount.AutoSize = true;
+            this.totalSwapsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalSwapsCount.ForeColor = System.Drawing.Color.White;
+            this.totalSwapsCount.Location = new System.Drawing.Point(273, 413);
+            this.totalSwapsCount.Name = "totalSwapsCount";
+            this.totalSwapsCount.Size = new System.Drawing.Size(21, 24);
+            this.totalSwapsCount.TabIndex = 3;
+            this.totalSwapsCount.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(461, 423);
+            this.ClientSize = new System.Drawing.Size(460, 459);
+            this.Controls.Add(this.totalSwapsCount);
+            this.Controls.Add(this.totalSwapsLabel);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.tableLayoutPanel);
             this.Name = "Form1";
@@ -208,6 +234,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.two)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.one)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -224,6 +251,8 @@
         private System.Windows.Forms.PictureBox two;
         private System.Windows.Forms.PictureBox one;
         private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Label totalSwapsLabel;
+        private System.Windows.Forms.Label totalSwapsCount;
     }
 }
 
