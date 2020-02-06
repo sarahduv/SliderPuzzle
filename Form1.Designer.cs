@@ -31,8 +31,8 @@
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.nine = new System.Windows.Forms.PictureBox();
             this.eight = new System.Windows.Forms.PictureBox();
-            this.seven = new System.Windows.Forms.PictureBox();
             this.six = new System.Windows.Forms.PictureBox();
+            this.seven = new System.Windows.Forms.PictureBox();
             this.five = new System.Windows.Forms.PictureBox();
             this.four = new System.Windows.Forms.PictureBox();
             this.three = new System.Windows.Forms.PictureBox();
@@ -44,8 +44,8 @@
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seven)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.six)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seven)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.five)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.four)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.three)).BeginInit();
@@ -101,17 +101,6 @@
             this.eight.TabStop = false;
             this.eight.Click += new System.EventHandler(this.swapTile);
             // 
-            // seven
-            // 
-            this.seven.Image = global::SliderPuzzle.Properties.Resources.seven;
-            this.seven.Location = new System.Drawing.Point(6, 218);
-            this.seven.Name = "seven";
-            this.seven.Size = new System.Drawing.Size(93, 96);
-            this.seven.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.seven.TabIndex = 6;
-            this.seven.TabStop = false;
-            this.seven.Click += new System.EventHandler(this.swapTile);
-            // 
             // six
             // 
             this.six.Image = global::SliderPuzzle.Properties.Resources.six;
@@ -122,6 +111,17 @@
             this.six.TabIndex = 5;
             this.six.TabStop = false;
             this.six.Click += new System.EventHandler(this.swapTile);
+            // 
+            // seven
+            // 
+            this.seven.Image = global::SliderPuzzle.Properties.Resources.seven;
+            this.seven.Location = new System.Drawing.Point(6, 218);
+            this.seven.Name = "seven";
+            this.seven.Size = new System.Drawing.Size(93, 96);
+            this.seven.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.seven.TabIndex = 6;
+            this.seven.TabStop = false;
+            this.seven.Click += new System.EventHandler(this.swapTile);
             // 
             // five
             // 
@@ -193,7 +193,7 @@
             this.totalSwapsLabel.AutoSize = true;
             this.totalSwapsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalSwapsLabel.ForeColor = System.Drawing.Color.White;
-            this.totalSwapsLabel.Location = new System.Drawing.Point(137, 413);
+            this.totalSwapsLabel.Location = new System.Drawing.Point(147, 413);
             this.totalSwapsLabel.Name = "totalSwapsLabel";
             this.totalSwapsLabel.Size = new System.Drawing.Size(129, 24);
             this.totalSwapsLabel.TabIndex = 2;
@@ -204,7 +204,7 @@
             this.totalSwapsCount.AutoSize = true;
             this.totalSwapsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalSwapsCount.ForeColor = System.Drawing.Color.White;
-            this.totalSwapsCount.Location = new System.Drawing.Point(273, 413);
+            this.totalSwapsCount.Location = new System.Drawing.Point(283, 413);
             this.totalSwapsCount.Name = "totalSwapsCount";
             this.totalSwapsCount.Size = new System.Drawing.Size(21, 24);
             this.totalSwapsCount.TabIndex = 3;
@@ -226,8 +226,8 @@
             this.tableLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seven)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.six)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seven)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.five)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.four)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.three)).EndInit();
