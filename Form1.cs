@@ -72,6 +72,7 @@ namespace SliderPuzzle
            if ((String)tile.Tag == "blank")
             {
                 MessageBox.Show("Pick a tile that has a number");
+                return;
             }
 
             var blankTileToSwap = getBlankTile();
@@ -81,7 +82,7 @@ namespace SliderPuzzle
             var tileRow = getTileRow(tile);
             var tileCol = getTileCol(tile);
 
-
+            // here you need to have an if that checks if the tile is above/below/left/right adjacent to the blank.
 
             var imageToPlace = tile.Image;
             blankTileToSwap.Image = imageToPlace;
