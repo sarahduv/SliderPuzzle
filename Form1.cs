@@ -83,10 +83,31 @@ namespace SliderPuzzle
             var tileCol = getTileCol(tile);
 
             // here you need to have an if that checks if the tile is above/below/left/right adjacent to the blank.
+            if (blankTileCol == tileCol)
+            {
+                if(tileRow + 1 == blankTileRow || blankTileRow + 1 == tileRow)
+                {
+                    helperSwapTile(tile, blankTileToSwap);
+                    return;
+                }
+            }
 
+            if (blankTileRow == tileRow)
+            {
+                if(tileCol + 1 == blankTileCol || blankTileCol + 1 == tileCol)
+                {
+                    helperSwapTile(tile, blankTileToSwap);
+                    return;
+                }
+            }
+            
+        }
+
+        private void helperSwapTile(PictureBox tile, PictureBox blankTile)
+        {
             var imageToPlace = tile.Image;
-            blankTileToSwap.Image = imageToPlace;
-            blankTileToSwap.Tag = tile.Tag;
+            blankTile.Image = imageToPlace;
+            blankTile.Tag = tile.Tag;
 
             tile.Image = Properties.Resources.blank;
             tile.Tag = "blank";
