@@ -39,6 +39,7 @@ namespace SliderPuzzle
                 { "eight", Properties.Resources.eight },
                 { "blank", Properties.Resources.blank }
             };
+            disableSwapping();
         }
 
         private void shuffleButton(object sender, EventArgs e)
