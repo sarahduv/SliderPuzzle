@@ -166,6 +166,7 @@ namespace SliderPuzzle
                     Debug.WriteLine((String)allTiles[i].Tag + "........." + sortedKeys[index]);
                     return false;
                 }
+                index++;
             }
             return true;
         }
