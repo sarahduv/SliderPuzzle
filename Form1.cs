@@ -15,7 +15,7 @@ namespace SliderPuzzle
         public bool completed;
         public PictureBox[] allTiles;
         public PictureBox[] allNumbers;
-        public Image[] allImages;
+        public Dictionary<string, Image> allImages;
         public Random random = new Random();
         public PictureBox currentBlankTile;
 
@@ -24,17 +24,18 @@ namespace SliderPuzzle
             InitializeComponent();
 
             allTiles = new PictureBox[9] { one, two, three, four, five, six, seven, eight, nine };
-            allImages = new Image[9]
+            
+            allImages = new Dictionary<string, Image>()
             {
-                Properties.Resources.one,
-                Properties.Resources.two,
-                Properties.Resources.three,
-                Properties.Resources.four,
-                Properties.Resources.five,
-                Properties.Resources.six,
-                Properties.Resources.seven,
-                Properties.Resources.eight,
-                Properties.Resources.blank
+                { "one", Properties.Resources.one },
+                { "two", Properties.Resources.two },
+                { "three", Properties.Resources.three },
+                { "four", Properties.Resources.four },
+                { "five", Properties.Resources.five },
+                { "six", Properties.Resources.six },
+                { "seven", Properties.Resources.seven },
+                { "eight", Properties.Resources.eight },
+                { "blank", Properties.Resources.blank }
             };
         }
 
@@ -45,19 +46,20 @@ namespace SliderPuzzle
                 allTiles[i].Image = null;
             }
 
-            var shuffledImages = new Stack<Image>(allImages.OrderBy(x => Guid.NewGuid()).ToList());
+            var shuffledImages = new Stack<string>(allImages.Keys.OrderBy(x => Guid.NewGuid()).ToList());
             Image imageToPlace;
 
             for (var i = 0; i < allTiles.Length; i++)
             {
-                imageToPlace = shuffledImages.Pop();
+                var imageToPlaceKey = shuffledImages.Pop();
+                imageToPlace = allImages[imageToPlaceKey];
+
                 allTiles[i].Image = imageToPlace;
                 allTiles[i].Tag = imageToPlace.ToString();
 
-                if (imageToPlace.ToString() == "blank")
+                if (imageToPlaceKey == "blank")
                 {
                     allTiles[i].Tag = "blank";
-                    MessageBox.Show("Blank is: " + allTiles[i].Tag);
                 }
             }
             completed = false;
@@ -65,7 +67,7 @@ namespace SliderPuzzle
 
         private void swapTile(object sender, EventArgs e)
         {
-            var tile = (PictureBox)sender;
+           var tile = (PictureBox)sender;
 
            if ((String)tile.Tag == "blank")
             {
@@ -73,12 +75,36 @@ namespace SliderPuzzle
             }
 
             var blankTileToSwap = getBlankTile();
+
+            var blankTileRow = getTileRow(blankTileToSwap);
+            var blankTileCol = getTileCol(blankTileToSwap);
+            var tileRow = getTileRow(tile);
+            var tileCol = getTileCol(tile);
+
+
+
             var imageToPlace = tile.Image;
             blankTileToSwap.Image = imageToPlace;
-            blankTileToSwap.Tag = tile.Tag.ToString();
+            blankTileToSwap.Tag = tile.Tag;
 
             tile.Image = Properties.Resources.blank;
             tile.Tag = "blank";
+        }
+
+        private int getTileRow(PictureBox tile)
+        {
+            int tileIndex = Array.IndexOf(allTiles, tile);
+            return tileIndex / 3;
+            // 0/3 == 0. 1/3 == 0. 2/3 == 0.
+            // 3/3 == 1. 4/3 == 1. 5/3 == 1.
+            // 6/3 == 2. 7/3 == 2. 8/3 == 2.
+        }
+
+        private int getTileCol(PictureBox tile)
+        {
+            int tileIndex = Array.IndexOf(allTiles, tile);
+            return tileIndex % 3;
+            // 0%3 == 0. 1%3 == 1. 2%3 == 2
         }
 
         private PictureBox getBlankTile()
